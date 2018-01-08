@@ -43,12 +43,12 @@
     _progress.center = self.view.center;
     
     if(self.contato) {
-            self.txtCep.text = self.contato.cep;
-            self.txtEnderecoCompleto.text = self.contato.enderecoCompleto;
-            self.txtDataNascimento.date = self.contato.dataNascimento;
-            self.txtSobrenome.text = self.contato.sobreNome;
-            self.txtNome.text = self.contato.sobreNome;
-        }
+        self.txtCep.text = self.contato.cep;
+        self.txtEnderecoCompleto.text = self.contato.enderecoCompleto;
+        self.txtDataNascimento.date = self.contato.dataNascimento;
+        self.txtSobrenome.text = self.contato.sobreNome;
+        self.txtNome.text = self.contato.sobreNome;
+    }
 }
 
 
@@ -58,39 +58,46 @@
 
 
 - (IBAction)cepFocusOut:(id)sender {
+    
+       [_progress startAnimating];
+    
     if(self.txtCep.text.length >= 8) {
-        [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
         
-        [_progress startAnimating];
+        [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
         
         GoogleService *service = [GoogleService new];
         
-        NSDictionary *request = [service recuperarEndereco: self.txtCep.text];
+        NSMutableDictionary *request = [service recuperarEndereco: self.txtCep.text];
         
-        if(!request || [request[@"status"] isEqualToString: @"ZERO_RESULTS"] ) {
+        
+        if(!request || [request[@"status"] isEqualToString: @"ZERO_RESULTS"] )
             [self criarAlertaDeAviso];
-        } else {
-            
-            NSDictionary *results = request[@"results"];
-            NSDictionary *geometry = results[@"geometry"];
-            NSDictionary *location = geometry[@"location"];
-            
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.txtEnderecoCompleto.text =  results[@"formatted_address"];
-                self.latitude = [location[@"lat"] stringValue];
-                self.longitude =[location[@"lng"] stringValue];
-                [_progress stopAnimating];
-                
-            });
-            
-        }
+         else
+             [self preencherCamposTela:request];
         
     } else {
-         [self criarAlertaDeAviso];
+        [self criarAlertaDeAviso];
     }
 }
 
+-(void) preencherCamposTela:(NSDictionary*) request{
+   
+    NSArray *endereco = [[request valueForKey: @"results"] valueForKey: @"formatted_address"];
+    
+    NSArray *localizacao = [[[[request valueForKey:@"results"] valueForKey:@"geometry"] valueForKey:@"location"] objectAtIndex: 0 ];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.txtEnderecoCompleto.text =  [endereco objectAtIndex:0];;
+        
+        self.latitude = [localizacao valueForKey:@"lat"];
+        
+        self.longitude =[localizacao valueForKey:@"lng"];
+        
+        [_progress stopAnimating];
+        
+    });
+
+}
 -(void) criarAlertaDeAviso{
     
     _erroGoogleService = YES;
@@ -111,7 +118,7 @@
 -(void) criarLoading{
     
     _progress = [[UIActivityIndicatorView alloc]
-                 initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleWhiteLarge ];
+                 initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray ];
     
     [self.view addSubview:_progress];
     
@@ -119,9 +126,9 @@
 
 - (IBAction)salvar:(id)sender {
     
-    ContatoRepository *repository   = [ContatoRepository new];
+    ContatoRepository *repository   = [[ContatoRepository alloc] init];
     
-    CGContato *contato =  [repository recuperarInstancia];
+    Contato *contato =  [repository recuperarInstancia];
     
     contato.nome = self.txtNome.text;
     contato.sobreNome = self.txtSobrenome.text;

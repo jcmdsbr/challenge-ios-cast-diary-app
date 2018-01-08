@@ -11,7 +11,7 @@
 
 @interface ContatoViewController : UIViewController
 
-@property (nonatomic,weak) CGContato *contato;
+@property (nonatomic,weak) Contato *contato;
 
 
 @end

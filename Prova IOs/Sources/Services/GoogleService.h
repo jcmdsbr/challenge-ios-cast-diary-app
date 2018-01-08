@@ -11,6 +11,6 @@
 @interface GoogleService : NSObject
 
 
--(NSDictionary*) recuperarEndereco : (NSString*) cep;
+-(NSMutableDictionary*) recuperarEndereco : (NSString*) cep;
 
 @end

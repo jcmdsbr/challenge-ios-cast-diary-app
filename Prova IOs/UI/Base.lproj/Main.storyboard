@@ -22,19 +22,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="7V9-ro-rng">
-                                <rect key="frame" x="16" y="276.5" width="343" height="114"/>
+                                <rect key="frame" x="16" y="255.5" width="343" height="156"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bem-vindo a LocAgenda, um app que organiza seus contatos." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifA-NE-cZK">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="42"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bem vindo, organize a localização dos seus amigos com a LOCALWALLET. Clique em entrar para prosseguir." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifA-NE-cZK">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="63"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="343" id="h7e-Tq-5gT"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.40000000000000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ckh-m8-1vv">
-                                        <rect key="frame" x="0.0" y="72" width="343" height="42"/>
+                                        <rect key="frame" x="0.0" y="93" width="343" height="63"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="343" id="kcH-GO-HcN"/>
                                         </constraints>
@@ -47,7 +47,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7V9-ro-rng" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6v7-o6-Yt6"/>
                             <constraint firstItem="7V9-ro-rng" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rbs-T4-ll7"/>
@@ -58,7 +58,7 @@
             </objects>
             <point key="canvasLocation" x="-967" y="-219"/>
         </scene>
-        <!--Contatos-->
+        <!--Amigos-->
         <scene sceneID="EPZ-vJ-rKC">
             <objects>
                 <tableViewController id="X7p-0F-HUf" customClass="AgendaTableViewController" sceneMemberID="viewController">
@@ -66,15 +66,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="sectionIndexBackgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contatoCell" id="hL6-b5-Vs2">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="contatoCell" textLabel="Ol1-4A-VWg" detailTextLabel="v84-oO-R7X" style="IBUITableViewCellStyleValue2" id="hL6-b5-Vs2">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hL6-b5-Vs2" id="868-fN-EbM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ol1-4A-VWg">
+                                            <rect key="frame" x="15" y="14" width="91" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="v84-oO-R7X">
+                                            <rect key="frame" x="112" y="14" width="35" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -84,7 +99,7 @@
                             <outlet property="delegate" destination="X7p-0F-HUf" id="C8B-b5-2Iv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Contatos" id="AAd-rQ-noV">
+                    <navigationItem key="navigationItem" title="Amigos" id="AAd-rQ-noV">
                         <barButtonItem key="backBarButtonItem" title="Voltar" id="GiD-9x-zo7"/>
                         <barButtonItem key="leftBarButtonItem" title="Localizar" id="gPx-7y-eyt">
                             <connections>
@@ -100,9 +115,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y83-cv-DtB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="820" y="-219.04047976011995"/>
+            <point key="canvasLocation" x="-154" y="-219"/>
         </scene>
-        <!--Novo Contato-->
+        <!--Novo Amigo-->
         <scene sceneID="HbW-pp-4ff">
             <objects>
                 <viewController id="pqa-oy-dxs" customClass="ContatoViewController" sceneMemberID="viewController">
@@ -115,7 +130,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="u5V-9o-iUU">
-                                <rect key="frame" x="16" y="64" width="343" height="425"/>
+                                <rect key="frame" x="16" y="79" width="343" height="425"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5T-qK-Pyn">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="20"/>
@@ -157,7 +172,7 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="yes" spellCheckingType="yes" keyboardAppearance="alert"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data de nascimento" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9J-lC-Ndx">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aniversário" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9J-lC-Ndx">
                                         <rect key="frame" x="0.0" y="160" width="343" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="343" id="fb8-VO-M2t"/>
@@ -227,13 +242,13 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="u5V-9o-iUU" firstAttribute="top" secondItem="g2V-7s-TcO" secondAttribute="bottom" id="a4g-xf-4aa"/>
+                            <constraint firstItem="u5V-9o-iUU" firstAttribute="top" secondItem="g2V-7s-TcO" secondAttribute="bottom" constant="15" id="1hb-fk-i9S"/>
                             <constraint firstItem="u5V-9o-iUU" firstAttribute="centerX" secondItem="aqR-2J-x1f" secondAttribute="centerX" id="iJg-jO-vmX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Novo Contato" id="wqc-xK-DmY">
+                    <navigationItem key="navigationItem" title="Novo Amigo" id="wqc-xK-DmY">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5EV-wX-fMU">
                             <connections>
                                 <action selector="salvar:" destination="pqa-oy-dxs" id="NXM-9R-EJX"/>
@@ -250,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TkG-ZX-Kcg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1836" y="-506.89655172413796"/>
+            <point key="canvasLocation" x="738" y="-539"/>
         </scene>
         <!--Mapa View Controller-->
         <scene sceneID="ztJ-Ew-3aD">
@@ -268,7 +283,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yBt-eB-1sS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1836" y="240.62968515742131"/>
+            <point key="canvasLocation" x="737" y="115"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CHh-rJ-6n0">
@@ -286,7 +301,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zA1-Bb-V2o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-119.2" y="-219.04047976011995"/>
+            <point key="canvasLocation" x="-154" y="-1052"/>
         </scene>
     </scenes>
 </document>

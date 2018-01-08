@@ -20,6 +20,7 @@
 		AD5610AA2000E98C00F5A4FB /* AgendaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5610A92000E98C00F5A4FB /* AgendaTableViewController.m */; };
 		AD5610AD2000EA4100F5A4FB /* ContatoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5610AC2000EA4100F5A4FB /* ContatoViewController.m */; };
 		AD5610B12000EB1400F5A4FB /* MapaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5610B02000EB1400F5A4FB /* MapaViewController.m */; };
+		ADD86AB62003AE3900107F64 /* ContatoEnumUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD86AB52003AE3900107F64 /* ContatoEnumUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		AD5610AC2000EA4100F5A4FB /* ContatoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContatoViewController.m; sourceTree = "<group>"; };
 		AD5610AF2000EB1400F5A4FB /* MapaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapaViewController.h; sourceTree = "<group>"; };
 		AD5610B02000EB1400F5A4FB /* MapaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapaViewController.m; sourceTree = "<group>"; };
+		ADD86AB42003AE3900107F64 /* ContatoEnumUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContatoEnumUtil.h; sourceTree = "<group>"; };
+		ADD86AB52003AE3900107F64 /* ContatoEnumUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContatoEnumUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +128,8 @@
 		AD2B1D03200026E600D9B9D5 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				ADD86AB42003AE3900107F64 /* ContatoEnumUtil.h */,
+				ADD86AB52003AE3900107F64 /* ContatoEnumUtil.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD51116E20013CCC00E862A6 /* GoogleService.m in Sources */,
+				ADD86AB62003AE3900107F64 /* ContatoEnumUtil.m in Sources */,
 				AD2B1D242000276C00D9B9D5 /* LoginViewController.m in Sources */,
 				AD5610AD2000EA4100F5A4FB /* ContatoViewController.m in Sources */,
 				AD2B1D18200026E600D9B9D5 /* AppDelegate.m in Sources */,
