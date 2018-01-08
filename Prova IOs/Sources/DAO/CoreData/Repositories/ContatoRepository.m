@@ -77,8 +77,8 @@
 -(NSArray<Contato*>*) recuperarLista {
 
     NSError *error = nil;
-    NSFetchRequest *request = [Contato fetchRequest];
-    NSArray<Contato*>* contatos = [[[self coreDataContext] executeRequest:request error:&error] mutableCopy];
+    NSFetchRequest *request =  [Contato fetchRequest];
+    NSArray<Contato*>* contatos = [[self coreDataContext] executeFetchRequest:request error:&error];
     
     if(error)
         return nil;

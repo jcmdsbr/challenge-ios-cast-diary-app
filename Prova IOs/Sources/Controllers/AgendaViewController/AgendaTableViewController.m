@@ -55,6 +55,7 @@
         ContatoViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ContatoViewControllerIdentifier"];
         
         [vc setContato:contato];
+        [vc setIsAlterar: YES];
         
         [self.navigationController pushViewController:vc animated:YES];
         

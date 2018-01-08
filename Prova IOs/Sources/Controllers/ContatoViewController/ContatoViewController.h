@@ -11,7 +11,8 @@
 
 @interface ContatoViewController : UIViewController
 
-@property (nonatomic,weak) Contato *contato;
+@property (weak, nonatomic) Contato *contato;
 
+@property (nonatomic) BOOL isAlterar;
 
 @end

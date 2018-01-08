@@ -40,8 +40,9 @@
    
      NSArray<Contato*>* contatos = [[ContatoRepository new] recuperarLista];
     
-    if(contatos && contatos.count > 0)
+    if(contatos && contatos.count > 0) {
         for (Contato *contato in contatos) {
+            
             
             CLLocationCoordinate2D location = CLLocationCoordinate2DMake([contato.latitude doubleValue], [contato.longitude doubleValue]);
             
@@ -54,6 +55,7 @@
             [self.mapa addAnnotation:pin];
             
         }
+    }
 }
 
 /*
