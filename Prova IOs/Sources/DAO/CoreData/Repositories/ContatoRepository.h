@@ -10,45 +10,19 @@
 #import "Prova_IOs+CoreDataModel.h"
 
 
-typedef NS_ENUM(NSUInteger, CGEnumAlfabeto) {
-    A,
-    B,
-    C,
-    D,
-    E,
-    F,
-    G,
-    H,
-    I,
-    J,
-    K,
-    L,
-    M,
-    N,
-    O,
-    P,
-    Q,
-    R,
-    S,
-    T,
-    U,
-    V,
-    W,
-    X,
-    Y,
-    Z
-};
 
 @interface ContatoRepository : NSObject
 
--(NSDictionary<NSNumber *,NSArray<CGContato *> *> *)recuperarTodos;
+-(NSDictionary<NSNumber *,NSArray<Contato *> *> *)recuperarTodos;
 
--(CGContato*) recuperarInstancia;
+-(NSArray<Contato*>*) recuperarLista;
+
+-(Contato*) recuperarInstancia;
 
 -(void) persistirContexto;
 
--(void) deletar : (CGContato*) contato;
+-(void) deletar : (Contato*) contato;
 
-+ (NSString *) recuperarNomeSessao:(CGEnumAlfabeto) enumAlfabeto;
+
 
 @end
