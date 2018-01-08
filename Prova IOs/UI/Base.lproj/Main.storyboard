@@ -103,7 +103,7 @@
                         <barButtonItem key="backBarButtonItem" title="Voltar" id="GiD-9x-zo7"/>
                         <barButtonItem key="leftBarButtonItem" title="Localizar" id="gPx-7y-eyt">
                             <connections>
-                                <segue destination="qIk-yZ-8uG" kind="show" identifier="localizarContatoSegue" id="nlN-mR-kxO"/>
+                                <segue destination="qIk-yZ-8uG" kind="show" identifier="mapaSegue" id="Egt-ub-5Gb"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Adicionar" id="OWk-fk-rpw">
@@ -278,12 +278,31 @@
                     <view key="view" contentMode="scaleToFill" id="AJc-3N-Vnu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ct6-pG-Egc">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGr-KL-zYI">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    </mapView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ct6-pG-Egc" firstAttribute="leading" secondItem="AJc-3N-Vnu" secondAttribute="leading" id="Tdx-XX-8jP"/>
+                            <constraint firstItem="ird-nu-BF5" firstAttribute="top" secondItem="ct6-pG-Egc" secondAttribute="bottom" id="a0y-Kk-DfG"/>
+                            <constraint firstAttribute="trailing" secondItem="ct6-pG-Egc" secondAttribute="trailing" id="kxO-6O-FFT"/>
+                            <constraint firstItem="ct6-pG-Egc" firstAttribute="top" secondItem="kj6-PR-8nz" secondAttribute="bottom" id="oe2-l8-HFx"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapa" destination="bGr-KL-zYI" id="kmD-vQ-Anl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yBt-eB-1sS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="737" y="115"/>
+            <point key="canvasLocation" x="736.79999999999995" y="114.69265367316342"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CHh-rJ-6n0">
