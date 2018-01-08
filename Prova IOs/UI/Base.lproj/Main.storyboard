@@ -120,7 +120,7 @@
         <!--Novo Amigo-->
         <scene sceneID="HbW-pp-4ff">
             <objects>
-                <viewController id="pqa-oy-dxs" customClass="ContatoViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContatoViewControllerIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pqa-oy-dxs" customClass="ContatoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g2V-7s-TcO"/>
                         <viewControllerLayoutGuide type="bottom" id="yFV-tt-Uh9"/>

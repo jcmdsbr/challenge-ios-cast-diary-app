@@ -47,7 +47,7 @@
         self.txtEnderecoCompleto.text = self.contato.enderecoCompleto;
         self.txtDataNascimento.date = self.contato.dataNascimento;
         self.txtSobrenome.text = self.contato.sobreNome;
-        self.txtNome.text = self.contato.sobreNome;
+        self.txtNome.text = self.contato.nome;
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "AgendaTableViewController.h"
+#import "ContatoViewController.h"
 #import "ContatoRepository.h"
 #import "ContatoEnumUtil.h"
 
@@ -21,7 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -36,7 +36,6 @@
     [super didReceiveMemoryWarning];
 }
 
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 24;
 }
@@ -47,9 +46,50 @@
     return contatos.count;
 }
 
--(NSString*) tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+-(NSArray *)tableView:(UITableView *)tableView  editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewRowAction *editAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Editar" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
+        
+        Contato *contato = [self.dicContatos objectForKey: @(indexPath.section)][indexPath.row];
+        
+        ContatoViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ContatoViewControllerIdentifier"];
+        
+        [vc setContato:contato];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }];
+    
+    
+    
+    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Excluir"  handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
+        
+        [self deletarLinha:tableView indexPath:indexPath];
+        
+    }];
+    
+    deleteAction.backgroundColor = [UIColor redColor];
+    editAction.backgroundColor = [UIColor blueColor];
+    
+    
+    return @[deleteAction,editAction];
+}
 
-    return @"Excluir";
+
+
+- (void) deletarLinha: (UITableView *)tableView indexPath:(NSIndexPath *)indexPath  {
+    Contato *contato = [self.dicContatos objectForKey: @(indexPath.section)][indexPath.row];
+    
+    ContatoRepository *repository = [ContatoRepository new];
+    
+    [repository deletar:contato];
+    [repository persistirContexto];
+    
+    self.dicContatos = [repository recuperarTodos];
+    
+    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [self.tableView reloadData];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -58,8 +98,8 @@
     
     Contato *contato = [self.dicContatos objectForKey: @(indexPath.section)][indexPath.row];
     
-    cell.textLabel.text = contato.nome;
-    cell.detailTextLabel.text = contato.sobreNome;
+    cell.textLabel.text = [contato.nome capitalizedString];
+    cell.detailTextLabel.text = [contato.sobreNome capitalizedString];
     
     return cell;
 }
@@ -72,24 +112,5 @@
     return [ContatoEnumUtil recuperarNomeSessao:(CGEnumAlfabeto)section ];
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        
-        Contato *contato = [self.dicContatos objectForKey: @(indexPath.section)][indexPath.row];
-        
-        ContatoRepository *repository = [ContatoRepository new];
-        
-        [repository deletar:contato];
-        [repository persistirContexto];
-        
-        self.dicContatos = [repository recuperarTodos];
-        
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
-        [self.tableView reloadData];
-    }
-}
 
 @end
