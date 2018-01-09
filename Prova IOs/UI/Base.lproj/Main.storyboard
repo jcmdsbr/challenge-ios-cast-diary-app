@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17C88" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,30 +18,37 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="7V9-ro-rng">
-                                <rect key="frame" x="-11.5" y="206" width="343" height="156"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="anw-I8-f0K">
+                                <rect key="frame" x="0.0" y="-3526" width="375" height="7719"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bem vindo, organize a localização dos seus amigos com a LOCALWALLET. Clique em entrar para prosseguir." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifA-NE-cZK">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="63"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="343" id="h7e-Tq-5gT"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifA-NE-cZK">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="7623"/>
+                                        <string key="text">Bem vindo, organize a localização dos seus amigos com a LOCALWALLET. Preencha seu nome, e clique em processeguir para continuar o acesso ao aplicativo.</string>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.40000000000000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ckh-m8-1vv">
-                                        <rect key="frame" x="0.0" y="93" width="343" height="63"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Escreva seu nome aqui" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="58g-ga-dI4">
+                                        <rect key="frame" x="0.0" y="7638" width="375" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="343" id="kcH-GO-HcN"/>
+                                            <constraint firstAttribute="height" constant="30" id="MGG-mI-FkD"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="yes" spellCheckingType="yes"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ckh-m8-1vv">
+                                        <rect key="frame" x="0.0" y="7683" width="375" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="yT0-7e-YNJ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                         <state key="normal" title="Entrar ➤"/>
                                         <connections>
-                                            <segue destination="uak-hc-d6g" kind="show" id="3iq-RU-yob"/>
+                                            <segue destination="uak-hc-d6g" kind="show" identifier="segueAvancar" id="3iq-RU-yob"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -49,10 +56,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7V9-ro-rng" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6v7-o6-Yt6"/>
-                            <constraint firstItem="7V9-ro-rng" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rbs-T4-ll7"/>
+                            <constraint firstItem="ifA-NE-cZK" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="A9H-Ph-Fff"/>
+                            <constraint firstItem="anw-I8-f0K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BUR-c4-fdL"/>
+                            <constraint firstItem="anw-I8-f0K" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ZGI-jj-bhD"/>
+                            <constraint firstItem="Ckh-m8-1vv" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="bXD-Ej-2hn"/>
+                            <constraint firstItem="58g-ga-dI4" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="nLC-6P-cME"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="txtNomeUsuario" destination="58g-ga-dI4" id="mge-zz-zgF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -63,16 +76,16 @@
             <objects>
                 <tableViewController id="X7p-0F-HUf" customClass="AgendaTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="g0Z-wp-cSh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="contatoCell" textLabel="Ol1-4A-VWg" detailTextLabel="v84-oO-R7X" style="IBUITableViewCellStyleValue2" id="hL6-b5-Vs2">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hL6-b5-Vs2" id="868-fN-EbM">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ol1-4A-VWg">
@@ -101,12 +114,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Amigos" id="AAd-rQ-noV">
                         <barButtonItem key="backBarButtonItem" title="Voltar" id="GiD-9x-zo7"/>
-                        <barButtonItem key="leftBarButtonItem" title="Localizar" id="gPx-7y-eyt">
+                        <barButtonItem key="leftBarButtonItem" image="icons8-marker-32" style="done" id="gPx-7y-eyt">
                             <connections>
                                 <segue destination="qIk-yZ-8uG" kind="show" identifier="mapaSegue" id="Egt-ub-5Gb"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Adicionar" id="OWk-fk-rpw">
+                        <barButtonItem key="rightBarButtonItem" image="icons8-add-user-male-32" id="OWk-fk-rpw">
                             <connections>
                                 <segue destination="pqa-oy-dxs" kind="show" identifier="adicionarContatoSegue" id="zAI-Y3-Xze"/>
                             </connections>
@@ -120,17 +133,17 @@
         <!--Novo Amigo-->
         <scene sceneID="HbW-pp-4ff">
             <objects>
-                <viewController storyboardIdentifier="ContatoViewControllerIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pqa-oy-dxs" customClass="ContatoViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContatoViewControllerIdentifier" id="pqa-oy-dxs" customClass="ContatoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g2V-7s-TcO"/>
                         <viewControllerLayoutGuide type="bottom" id="yFV-tt-Uh9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aqR-2J-x1f">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="u5V-9o-iUU">
-                                <rect key="frame" x="-10" y="79" width="340" height="427.5"/>
+                                <rect key="frame" x="17.5" y="79" width="340" height="427.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5T-qK-Pyn">
                                         <rect key="frame" x="143.5" y="0.0" width="53" height="20.5"/>
@@ -224,14 +237,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Novo Amigo" id="wqc-xK-DmY">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="5EV-wX-fMU">
+                        <barButtonItem key="rightBarButtonItem" title="Salvar" id="5EV-wX-fMU">
                             <connections>
                                 <action selector="salvar:" destination="pqa-oy-dxs" id="NXM-9R-EJX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="btnSalvar" destination="5EV-wX-fMU" id="Pvz-2t-nYW"/>
                         <outlet property="txtCep" destination="sv2-T5-2q0" id="bxP-kl-Z8g"/>
                         <outlet property="txtDataNascimento" destination="UXh-4L-Kby" id="48r-B1-LS2"/>
                         <outlet property="txtEnderecoCompleto" destination="l24-zd-5cY" id="be5-c5-vl9"/>
@@ -252,14 +264,14 @@
                         <viewControllerLayoutGuide type="bottom" id="ird-nu-BF5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="AJc-3N-Vnu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ct6-pG-Egc">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" mapType="standard" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bGr-KL-zYI">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bGr-KL-zYI">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                     </mapView>
                                 </subviews>
                             </stackView>
@@ -299,4 +311,8 @@
             <point key="canvasLocation" x="-154" y="-1052"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-add-user-male-32" width="32" height="32"/>
+        <image name="icons8-marker-32" width="32" height="32"/>
+    </resources>
 </document>

@@ -20,6 +20,7 @@
 		AD5610AA2000E98C00F5A4FB /* AgendaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5610A92000E98C00F5A4FB /* AgendaTableViewController.m */; };
 		AD5610AD2000EA4100F5A4FB /* ContatoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5610AC2000EA4100F5A4FB /* ContatoViewController.m */; };
 		AD5610B12000EB1400F5A4FB /* MapaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5610B02000EB1400F5A4FB /* MapaViewController.m */; };
+		ADA291162004DF9A0051D348 /* UserDefaultRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA291152004DF9A0051D348 /* UserDefaultRepository.m */; };
 		ADD86AB62003AE3900107F64 /* ContatoEnumUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD86AB52003AE3900107F64 /* ContatoEnumUtil.m */; };
 		ADD86AB92003DACA00107F64 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD86AB82003DACA00107F64 /* MapKit.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,8 @@
 		AD5610AC2000EA4100F5A4FB /* ContatoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContatoViewController.m; sourceTree = "<group>"; };
 		AD5610AF2000EB1400F5A4FB /* MapaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapaViewController.h; sourceTree = "<group>"; };
 		AD5610B02000EB1400F5A4FB /* MapaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapaViewController.m; sourceTree = "<group>"; };
+		ADA291142004DF9A0051D348 /* UserDefaultRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultRepository.h; sourceTree = "<group>"; };
+		ADA291152004DF9A0051D348 /* UserDefaultRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultRepository.m; sourceTree = "<group>"; };
 		ADD86AB42003AE3900107F64 /* ContatoEnumUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContatoEnumUtil.h; sourceTree = "<group>"; };
 		ADD86AB52003AE3900107F64 /* ContatoEnumUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContatoEnumUtil.m; sourceTree = "<group>"; };
 		ADD86AB82003DACA00107F64 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -152,6 +155,7 @@
 		AD2B1D05200026E600D9B9D5 /* DAO */ = {
 			isa = PBXGroup;
 			children = (
+				ADA291132004DF0A0051D348 /* UserDefault */,
 				AD2B1D06200026E600D9B9D5 /* CoreData */,
 			);
 			path = DAO;
@@ -253,6 +257,15 @@
 			path = MapaViewController;
 			sourceTree = "<group>";
 		};
+		ADA291132004DF0A0051D348 /* UserDefault */ = {
+			isa = PBXGroup;
+			children = (
+				ADA291142004DF9A0051D348 /* UserDefaultRepository.h */,
+				ADA291152004DF9A0051D348 /* UserDefaultRepository.m */,
+			);
+			path = UserDefault;
+			sourceTree = "<group>";
+		};
 		ADD86AB72003DACA00107F64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD51116E20013CCC00E862A6 /* GoogleService.m in Sources */,
+				ADA291162004DF9A0051D348 /* UserDefaultRepository.m in Sources */,
 				ADD86AB62003AE3900107F64 /* ContatoEnumUtil.m in Sources */,
 				AD2B1D242000276C00D9B9D5 /* LoginViewController.m in Sources */,
 				AD5610AD2000EA4100F5A4FB /* ContatoViewController.m in Sources */,

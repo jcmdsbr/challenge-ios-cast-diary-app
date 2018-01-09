@@ -18,55 +18,58 @@
 }
 
 - (void) deletar:(Contato *)contato{
-    
     [[self coreDataContext] deleteObject:contato];
-    
-    [self persistirContexto];
-    
 }
 
 -(Contato*) recuperarInstancia {
-    
-    return   [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Contato class]) inManagedObjectContext:[self coreDataContext]];
+    return   [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Contato class])
+                                           inManagedObjectContext:[self coreDataContext]];
 }
 
 
 -(void) persistirContexto {
     NSError *error = nil;
     [[self coreDataContext] save:&error];
-
 }
 
-- (NSDictionary<NSNumber *,NSArray<Contato *> *> *)recuperarTodos {
+- (NSDictionary<NSNumber *,NSArray<Contato *> *> *)recuperarEmOrdemAlfabetica {
+    
     NSMutableDictionary *resultado = [@{} mutableCopy];
     NSError *error = nil;
     NSFetchRequest *request =  [Contato fetchRequest];
     NSArray* contatos = [[self coreDataContext] executeFetchRequest:request error:&error];
     
-    
-    if(error)
+    if(error) {
         return nil;
-    
+    }
     else {
         if(contatos && contatos.count > 0) {
+            
             for (Contato *contato in contatos)
             {
-            
-                NSString *key = [ [contato.nome substringToIndex:1] capitalizedString];
-                
-                NSNumber *n = [ContatoEnumUtil convertEnumEmString:key];
-                
-                NSMutableArray *contatosPorLetra = [resultado objectForKey: n];
-                
-                if (contatosPorLetra == nil)
-                {
-                    contatosPorLetra = [@[] mutableCopy];
-                    [resultado setObject:contatosPorLetra forKey: n];
+                if(contato.nome.length > 0) {
+                    
+                    NSString * primeiraLetra = [contato.nome substringToIndex:1];
+                    
+                    NSString *key = [ primeiraLetra capitalizedString];
+                    
+                    NSNumber *n = [ContatoEnumUtil convertEnumEmString:key];
+                    
+                    NSMutableArray *contatosPorLetra = [resultado objectForKey: n];
+                    
+                    if (contatosPorLetra == nil)
+                    {
+                        contatosPorLetra = [@[] mutableCopy];
+                        [resultado setObject:contatosPorLetra forKey: n];
+                    }
+                    
+                    [contatosPorLetra addObject:contato];
                 }
-                
-                [contatosPorLetra addObject:contato];
             }
-            return resultado;
+            
+        return resultado;
+            
+            
         } else {
             return nil;
         }
@@ -74,7 +77,7 @@
     
 }
 
--(NSArray<Contato*>*) recuperarLista {
+-(NSArray<Contato*>*) recuperarTodosEmLista {
 
     NSError *error = nil;
     NSFetchRequest *request =  [Contato fetchRequest];

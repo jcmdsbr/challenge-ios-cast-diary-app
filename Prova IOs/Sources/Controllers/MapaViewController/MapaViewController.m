@@ -38,7 +38,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
    
-     NSArray<Contato*>* contatos = [[ContatoRepository new] recuperarLista];
+     NSArray<Contato*>* contatos = [[ContatoRepository new] recuperarTodosEmLista];
     
     if(contatos && contatos.count > 0) {
         for (Contato *contato in contatos) {
@@ -58,14 +58,5 @@
     }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

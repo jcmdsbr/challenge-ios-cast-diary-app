@@ -13,16 +13,14 @@
 
 @interface ContatoRepository : NSObject
 
--(NSDictionary<NSNumber *,NSArray<Contato *> *> *)recuperarTodos;
+-(NSDictionary<NSNumber *,NSArray<Contato *> *> *)recuperarEmOrdemAlfabetica;
 
--(NSArray<Contato*>*) recuperarLista;
+-(NSArray<Contato*>*) recuperarTodosEmLista;
 
 -(Contato*) recuperarInstancia;
 
 -(void) persistirContexto;
 
 -(void) deletar : (Contato*) contato;
-
-
 
 @end

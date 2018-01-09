@@ -43,47 +43,48 @@
     _progress.center = self.view.center;
     
     if(self.contato) {
-        self.txtCep.text = self.contato.cep;
-        self.txtEnderecoCompleto.text = self.contato.enderecoCompleto;
-        self.txtDataNascimento.date = self.contato.dataNascimento;
-        self.txtSobrenome.text = self.contato.sobreNome;
-        self.txtNome.text = self.contato.nome;
-        
-        _latitude = self.contato.latitude;
-        _longitude = self.contato.longitude;
-        
+        [self preencherCamposTelaEditar];
     }
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-
-- (IBAction)cepFocusOut:(id)sender {
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [super touchesBegan:touches withEvent:event];
     
-    [_progress startAnimating];
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
     
-    if(self.txtCep.text.length == 8) {
-        
-        [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
-        
-        GoogleService *service = [GoogleService new];
-        
-        NSMutableDictionary *request = [service recuperarEndereco: self.txtCep.text];
-        
-        if(!request || [request[@"status"] isEqualToString: @"ZERO_RESULTS"] )
-            [self criarAlertaDeAviso];
-        else
-            [self preencherCamposTela:request];
-        
-    } else {
-        [self criarAlertaDeAviso];
-    }
 }
 
--(void) preencherCamposTela:(NSDictionary*) request{
+#pragma marks - Funções de Configuração
+
+-(void) criarLoading{
+    
+    _progress = [[UIActivityIndicatorView alloc]
+                 initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray ];
+    
+    [self.view addSubview:_progress];
+    
+}
+
+#pragma marks - Eventos de preenchimento
+
+- (void) preencherCamposTelaEditar  {
+
+    self.txtCep.text = self.contato.cep;
+    self.txtEnderecoCompleto.text = self.contato.enderecoCompleto;
+    self.txtDataNascimento.date = self.contato.dataNascimento;
+    self.txtSobrenome.text = self.contato.sobreNome;
+    self.txtNome.text = self.contato.nome;
+    
+    _latitude = self.contato.latitude;
+    _longitude = self.contato.longitude;
+
+}
+
+-(void) preencherAutoComplete:(NSDictionary*) request{
     
     NSArray *endereco = [[request valueForKey: @"results"] valueForKey: @"formatted_address"];
     
@@ -101,14 +102,17 @@
     });
     
 }
+
+#pragma marks - Alertas
+
 -(void) criarAlertaDeAviso{
     
     _erroGoogleService = YES;
     
     NSString* mensagem = @"Não foi possivel preencher automaticamente o endereço, por favor preencher manualmente.";
     
-    UIAlertController *alert = [ UIAlertController  alertControllerWithTitle:@"Alerta !" message: mensagem
-                                                              preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [ UIAlertController  alertControllerWithTitle:@"Alerta !"
+                                                                     message: mensagem preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *acaoOK = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     
@@ -120,24 +124,37 @@
     
 }
 
--(void) criarLoading{
+#pragma marks - Ações
+
+- (IBAction)cepFocusOut:(id)sender {
     
-    _progress = [[UIActivityIndicatorView alloc]
-                 initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray ];
+    [_progress startAnimating];
     
-    [self.view addSubview:_progress];
+    if(self.txtCep.text.length == 8) {
+        
+        [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+        
+        GoogleService *service = [GoogleService new];
+        
+        NSMutableDictionary *request = [service recuperarEndereco: self.txtCep.text];
+        
+        if(!request || [request[@"status"] isEqualToString: @"ZERO_RESULTS"] )
+            [self criarAlertaDeAviso];
+        else
+            [self preencherAutoComplete:request];
+        
+    } else [self criarAlertaDeAviso];
     
 }
+
 
 - (IBAction)salvar:(id)sender {
     
     ContatoRepository *repository = [ContatoRepository new];
     
-    
-    if(self.isAlterar) {
+    if(self.isAlterar)
         [repository deletar:self.contato];
 
-    }
     
     Contato *contato =  [repository recuperarInstancia];
     
@@ -152,13 +169,6 @@
     [repository  persistirContexto];
     
     [self.navigationController popViewControllerAnimated:YES];
-    
-}
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [super touchesBegan:touches withEvent:event];
-    
-    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
     
 }
 
