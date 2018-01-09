@@ -37,7 +37,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self  criarLoading];
     
     _progress.center = self.view.center;
@@ -81,6 +80,8 @@
     
     _latitude = self.contato.latitude;
     _longitude = self.contato.longitude;
+    
+    [self setTitle:self.contato.nome];
 
 }
 
@@ -105,7 +106,7 @@
 
 #pragma marks - Alertas
 
--(void) criarAlertaDeAviso{
+-(void) criarAlertaDeAvisoAPI{
     
     _erroGoogleService = YES;
     
@@ -124,6 +125,43 @@
     
 }
 
+
+- (void) criarAlertaDeAvisoSalvar {
+
+    NSString* mensagem = @"Devido ao erro ao consumir o serviço de cep não sera possível localizar contato, caso queira essa funcionalidade tente novamente mais tarde.";
+    
+    UIAlertController *alert = [ UIAlertController  alertControllerWithTitle:@"Alerta !"
+                                                                     message: mensagem preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *acaoCancelar = [UIAlertAction actionWithTitle:@"Cancelar" style:UIAlertActionStyleCancel handler: nil];
+    
+    
+    UIAlertAction *acaoOK = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    
+        [self salvar];
+    }];
+    
+    [alert addAction:acaoOK];
+    [alert addAction:acaoCancelar];
+    [self presentViewController: alert animated:YES completion:nil];
+   
+}
+
+-(void) criarAlertValidacao {
+    NSString* mensagem = @"Preencha pelo menos o nome para prosseguir.";
+    
+    UIAlertController *alert = [ UIAlertController  alertControllerWithTitle:@"Alerta !"
+                                                                     message: mensagem preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *acaoOK =
+    [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    
+    [alert addAction:acaoOK];
+    
+    [self presentViewController: alert animated:YES completion:nil];
+
+}
+
 #pragma marks - Ações
 
 - (IBAction)cepFocusOut:(id)sender {
@@ -139,22 +177,36 @@
         NSMutableDictionary *request = [service recuperarEndereco: self.txtCep.text];
         
         if(!request || [request[@"status"] isEqualToString: @"ZERO_RESULTS"] )
-            [self criarAlertaDeAviso];
+            [self criarAlertaDeAvisoAPI];
         else
             [self preencherAutoComplete:request];
         
-    } else [self criarAlertaDeAviso];
+    } else [self criarAlertaDeAvisoAPI];
     
 }
 
 
 - (IBAction)salvar:(id)sender {
+    if([self.txtNome.text stringByTrimmingCharactersInSet:
+        [NSCharacterSet whitespaceCharacterSet]].length > 0) {
+        if(_erroGoogleService)
+            [self criarAlertaDeAvisoSalvar];
+        else
+            [self salvar];
+        
+    } else {
+        [self criarAlertValidacao];
+    }
+}
+
+
+-(void) salvar {
     
     ContatoRepository *repository = [ContatoRepository new];
     
     if(self.isAlterar)
         [repository deletar:self.contato];
-
+    
     
     Contato *contato =  [repository recuperarInstancia];
     
@@ -169,7 +221,7 @@
     [repository  persistirContexto];
     
     [self.navigationController popViewControllerAnimated:YES];
-    
+
 }
 
 @end
