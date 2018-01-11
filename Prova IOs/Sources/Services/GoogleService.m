@@ -8,28 +8,27 @@
 
 #import "GoogleService.h"
 
-@implementation GoogleService
+static NSString* const API_KEY = @"AIzaSyCMpP_TwZKF_HyJni5bQDvxfFytskTmFUU";
 
-static NSString *API_KEY = @"AIzaSyCMpP_TwZKF_HyJni5bQDvxfFytskTmFUU";
-static NSString * BASE_URL = @"https://maps.googleapis.com/maps/api/geocode/json?address=%@&key=%@";
+static NSString* const GOOGLE_SERVICE_API = @"https://maps.googleapis.com/maps/api/geocode/json?address=%@&key=%@";
+
+@implementation GoogleService
 
 -(NSMutableDictionary *)recuperarEndereco:(NSString *)cep {
     
-    NSString *url = [NSString stringWithFormat: BASE_URL, cep, API_KEY];
+    NSString *url = [NSString stringWithFormat: GOOGLE_SERVICE_API, cep, API_KEY];
     
     NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString:url]];
     
     NSError *jsonError = nil;
     
     NSMutableDictionary *json =
-        [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
+    [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
     
     if(jsonError)
         return nil;
-    else
-        return json;
     
+    return json;
 }
-
 
 @end

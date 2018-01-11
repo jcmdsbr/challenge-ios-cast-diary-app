@@ -9,6 +9,7 @@
 #import "ContatoViewController.h"
 #import "ContatoRepository.h"
 #import "GoogleService.h"
+#import "MensagensGeraisUtil.h"
 
 
 @interface ContatoViewController ()
@@ -30,9 +31,9 @@
 @implementation ContatoViewController
 {
     UIActivityIndicatorView *_progress;
-    BOOL _erroGoogleService;
     NSString *_latitude;
     NSString *_longitude;
+    BOOL _erroGoogleService;
 }
 
 - (void)viewDidLoad {
@@ -110,10 +111,8 @@
     
     _erroGoogleService = YES;
     
-    NSString* mensagem = @"Não foi possivel preencher automaticamente o endereço, por favor preencher manualmente.";
-    
     UIAlertController *alert = [ UIAlertController  alertControllerWithTitle:@"Alerta !"
-                                                                     message: mensagem preferredStyle:UIAlertControllerStyleAlert];
+                                                                     message: MSG_ERRO_CONSUMO_GOOGLE_API preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *acaoOK = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     
@@ -121,25 +120,25 @@
     
     [self presentViewController: alert animated:YES completion:nil];
     
-    [_progress stopAnimating];
+    [self limparCampoEndereco];
     
 }
 
 
 - (void) criarAlertaDeAvisoSalvar {
-
-    NSString* mensagem = @"Devido ao erro ao consumir o serviço de cep não sera possível localizar contato, caso queira essa funcionalidade tente novamente mais tarde.";
     
     UIAlertController *alert = [ UIAlertController  alertControllerWithTitle:@"Alerta !"
-                                                                     message: mensagem preferredStyle:UIAlertControllerStyleActionSheet];
+                                                                     message: MSG_ALERTA_AO_SALVAR preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *acaoCancelar = [UIAlertAction actionWithTitle:@"Cancelar" style:UIAlertActionStyleCancel handler: nil];
+    UIAlertAction *acaoCancelar = [UIAlertAction actionWithTitle:@"Cancelar"
+                                                           style:UIAlertActionStyleCancel handler: nil];
     
     
-    UIAlertAction *acaoOK = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-    
-        [self salvar];
-    }];
+    UIAlertAction *acaoOK = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * _Nonnull action) {
+                                                       
+                                                       [self salvar];
+                                                   }];
     
     [alert addAction:acaoOK];
     [alert addAction:acaoCancelar];
@@ -148,10 +147,9 @@
 }
 
 -(void) criarAlertValidacao {
-    NSString* mensagem = @"Preencha pelo menos o nome para prosseguir.";
     
     UIAlertController *alert = [ UIAlertController  alertControllerWithTitle:@"Alerta !"
-                                                                     message: mensagem preferredStyle:UIAlertControllerStyleAlert];
+                                                                     message: MSG_NOME_OBRIGATORIO preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *acaoOK =
     [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
@@ -159,7 +157,7 @@
     [alert addAction:acaoOK];
     
     [self presentViewController: alert animated:YES completion:nil];
-
+    
 }
 
 #pragma marks - Ações
@@ -181,10 +179,15 @@
         else
             [self preencherAutoComplete:request];
         
-    } else [self criarAlertaDeAvisoAPI];
-    
+    } else if(self.txtCep.text.length != 0)
+        [self criarAlertaDeAvisoAPI];
+  
+    [_progress stopAnimating];
 }
 
+-(void) limparCampoEndereco {
+  self.txtEnderecoCompleto.text = @"";
+}
 
 - (IBAction)salvar:(id)sender {
     if([self.txtNome.text stringByTrimmingCharactersInSet:

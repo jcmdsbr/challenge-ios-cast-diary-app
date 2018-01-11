@@ -44,7 +44,8 @@
         for (Contato *contato in contatos) {
             
             
-            CLLocationCoordinate2D location = CLLocationCoordinate2DMake([contato.latitude doubleValue], [contato.longitude doubleValue]);
+            CLLocationCoordinate2D location = CLLocationCoordinate2DMake([contato.latitude doubleValue],
+                                                                         [contato.longitude doubleValue]);
             
             MKPointAnnotation *pin = [MKPointAnnotation new];
            

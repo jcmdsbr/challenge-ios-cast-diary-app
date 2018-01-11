@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "AgendaTableViewController.h"
 #import "UserDefaultRepository.h"
+#import "MensagensGeraisUtil.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *txtNomeUsuario;
@@ -33,7 +34,9 @@
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)
 senderx{
     
-    if([self.txtNomeUsuario.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length > 0){
+    if([self.txtNomeUsuario.text stringByTrimmingCharactersInSet:
+        [NSCharacterSet whitespaceCharacterSet]].length > 0){
+        
         [self performSegueWithIdentifier:@"segueAvancar" sender:nil];
     }
     
@@ -58,10 +61,8 @@ sender{
 
 -(void) criarAlertAviso {
     
-    NSString* mensagem = @"Preencha seu nome para prosseguir.";
-    
     UIAlertController *alert = [ UIAlertController  alertControllerWithTitle:@"Alerta !"
-                                                                     message: mensagem preferredStyle:UIAlertControllerStyleAlert];
+                                                                     message: MSG_NOME_OBRIGATORIO preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *acaoOK = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     

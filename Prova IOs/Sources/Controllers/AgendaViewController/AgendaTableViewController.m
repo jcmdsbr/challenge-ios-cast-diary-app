@@ -11,10 +11,12 @@
 #import "ContatoRepository.h"
 #import "UserDefaultRepository.h"
 #import "ContatoEnumUtil.h"
+#import "MensagensGeraisUtil.h"
 
 @interface AgendaTableViewController ()
 
 @property (strong, nonatomic) NSDictionary<NSNumber *,NSArray<Contato *> *> * dicContatos;
+@property (strong, nonatomic) ContatoRepository *repository;
 
 
 @end
@@ -26,13 +28,13 @@
     
     NSString *nome = [[UserDefaultRepository sharedInstance] nomeUsuario];
     self.title = [NSString stringWithFormat:@"Contatos de %@",nome];
-    
+    self.repository = [ContatoRepository new];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    self.dicContatos = [[ContatoRepository new] recuperarEmOrdemAlfabetica];
+    self.dicContatos = [self.repository recuperarEmOrdemAlfabetica];
     
     [self.tableView reloadData];
 }
@@ -139,12 +141,10 @@
     
     Contato *contato = [self.dicContatos objectForKey: @(indexPath.section)][indexPath.row];
     
-    ContatoRepository *repository = [ContatoRepository new];
+    [self.repository deletar:contato];
+    [self.repository persistirContexto];
     
-    [repository deletar:contato];
-    [repository persistirContexto];
-    
-    self.dicContatos = [repository recuperarEmOrdemAlfabetica];
+    self.dicContatos = [self.repository recuperarEmOrdemAlfabetica];
     
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     
