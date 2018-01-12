@@ -69,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1502" y="-219"/>
+            <point key="canvasLocation" x="-2188" y="-208"/>
         </scene>
         <!--Amigos-->
         <scene sceneID="EPZ-vJ-rKC">
@@ -128,11 +128,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y83-cv-DtB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-534" y="-219"/>
+            <point key="canvasLocation" x="-793" y="-208"/>
         </scene>
         <!--Cadastrar -->
         <scene sceneID="HbW-pp-4ff">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TkG-ZX-Kcg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ContatoViewControllerIdentifier" id="pqa-oy-dxs" customClass="ContatoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g2V-7s-TcO"/>
@@ -251,7 +252,6 @@
                         <outlet property="txtSobrenome" destination="KdS-Cp-dQ0" id="V9X-H4-b0n"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TkG-ZX-Kcg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="20" y="-485"/>
         </scene>
@@ -308,7 +308,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zA1-Bb-V2o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1018" y="-219"/>
+            <point key="canvasLocation" x="-1438" y="-208"/>
         </scene>
     </scenes>
     <resources>

@@ -93,6 +93,9 @@
     NSArray *localizacao = [[[[request valueForKey:@"results"] valueForKey:@"geometry"] valueForKey:@"location"] objectAtIndex: 0 ];
     
     dispatch_async(dispatch_get_main_queue(), ^{
+       
+        _erroGoogleService = NO;
+        
         self.txtEnderecoCompleto.text =  [endereco objectAtIndex:0];
         
         _latitude = [[localizacao valueForKey:@"lat"] stringValue];
