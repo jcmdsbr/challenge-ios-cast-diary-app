@@ -8,7 +8,7 @@
 
 #import "GoogleService.h"
 
-static NSString* const API_KEY = @"AIzaSyCMpP_TwZKF_HyJni5bQDvxfFytskTmFUU";
+static NSString* const API_KEY = @"";
 
 static NSString* const GOOGLE_SERVICE_API = @"https://maps.googleapis.com/maps/api/geocode/json?address=%@&key=%@";
 
