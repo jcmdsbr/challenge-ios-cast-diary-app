@@ -1,11 +1,21 @@
-# Resumo
+#  Diary App :sunglasses:
+
 - Projeto de conclusão do treinamento de ios abordando todo conteúdo dado.
 
-O aplicativo deve conter os seguintes requisitos:
+## Estrelinha! :star:
 
-- [OK] Classes e objetos em Objective-C que contenham Categories, Enums, Protocols etc;
-- [OK] Utilze no mínimo os componentes UINavigationController, UITabBarController, UITableViewController¹;
-- [OK] Fazer parse do modelos utilizando XML ou JSON;
-- [OK] Não pode ser semelhante ao aplicativo desenvolvimento no treinamento;
-- [OK] Persista as informações utilizando o COREDATA;
-- [OK] Consumir uma api externa. (Google geolocalização)
+Se esse projeto te ajudou em alguma coisa, taquele pau na estrelinha \o/
+
+## Para rodar esse projeto, você vai precisar das seguintes ferramentas :exclamation:
+
+- MacOS
+- X-Code
+
+ Requisitos do desafio 📑
+
+-  Classes e objetos em Objective-C que contenham Categories, Enums, Protocols etc ✔️
+-  Utilze no mínimo os componentes UINavigationController, UITabBarController, UITableViewController ✔️
+-  Fazer parse do modelos utilizando XML ou JSON ✔️
+-  Não pode ser semelhante ao aplicativo desenvolvimento no treinamento ✔️
+-  Persista as informações utilizando o COREDATA ✔️
+-  Consumir uma api externa. (Google geolocalização) ✔️
